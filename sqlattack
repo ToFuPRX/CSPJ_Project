@@ -1,0 +1,29 @@
+import sqlite3
+
+conn = sqlite3.connect("app/data.sqlite")
+cursor = conn.cursor()
+#cursor.execute("CREATE TABLE IF NOT EXISTS people (name TEXT, age NUMERIC)")
+name = input("Name: ")
+# age = int(input("Age: "))
+# cursor.executescript(f"INSERT INTO people VALUES ('{name}', {age})")
+#conn.commit()
+
+# printing out the whole database
+cursor.execute(f"SELECT * FROM people WHERE name='{name}'")
+result = cursor.fetchall()
+if result != []:
+    print("result in the database")
+else:
+    print("Must insert it")
+
+
+# fetch all the matching rows  
+# result = cursor.fetchall() 
+# # # loop through the rows 
+# print(result)
+# for row in result: 
+#     print(row) 
+#     print("\n")
+
+#print("Data successfully inserted!")
+conn.close()
